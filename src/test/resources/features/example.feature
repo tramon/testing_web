@@ -7,5 +7,5 @@ Feature: Example feature
 
   Scenario: Searching Google...
     Given I open "http://google.com" page
-    When I search for "google calc"
-    Then I google should show me results!
+    When In google page I search for "google calc"
+    Then I should have google calc page opened

@@ -27,11 +27,10 @@ public class ExampleSteps {
 
     @Given("^I open \"([^\"]*)\" page$")
     public void i_open_google_page(String url) {
-        webDriver.manage().window().maximize();
         webDriver.navigate().to(url);
     }
 
-    @When("^I search for \"([^\"]*)\"$")
+    @When("^In google page I search for \"([^\"]*)\"$")
     public void i_search_for(String text){
         googlePage.getGoogleInput().clear();
         googlePage.getGoogleInput().sendKeys(text);
@@ -39,8 +38,8 @@ public class ExampleSteps {
     }
 
 
-    @Then("^I google should show me results!$")
+    @Then("^I should have google calc page opened$")
     public void i_google_should_show_me_results() {
-        System.out.println("results");
+        System.out.println("Mock here for now");
     }
 }

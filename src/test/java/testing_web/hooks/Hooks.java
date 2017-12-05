@@ -15,12 +15,11 @@ public class Hooks {
         this.driver = driver;
     }
 
-/*
     @Before
     public void openWebSite() {
-        driver.navigate().to("http://www.google.com");
+        driver.manage().deleteAllCookies();
+        driver.manage().window().maximize();
     }
-*/
 
     @After
     public void closeSession() {
