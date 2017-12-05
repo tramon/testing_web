@@ -5,18 +5,26 @@
     <groupId>testing_web</groupId>
     <artifactId>testing_web</artifactId>
     <version>1.0</version>
+    <packaging>jar</packaging>
 
     <properties>
         <failsafe.fork.count>1</failsafe.fork.count>
         <java.version>1.8</java.version>
         <maven.build.timestamp.format>yyyy-MM-dd-HHmm</maven.build.timestamp.format>
+        <maven-download-plugin.version>1.3.0</maven-download-plugin.version>
+
         <encoding>UTF-8</encoding>
         <project.build.sourceEncoding>${encoding}</project.build.sourceEncoding>
         <project.reporting.outputEncoding>${encoding}</project.reporting.outputEncoding>
         <project.resources.sourceEncoding>${encoding}</project.resources.sourceEncoding>
         <archetype.encoding>${encoding}</archetype.encoding>
+
         <cucumber.version>1.2.5</cucumber.version>
         <selenium.version>3.0.1</selenium.version>
+
+        <web.chrome.driver>drivers\\web\\chromedriver.exe</web.chrome.driver>
+        <chromedriver-dep.version>2.33</chromedriver-dep.version>
+
     </properties>
 
     <build>
@@ -99,6 +107,60 @@
                     </execution>
                 </executions>
             </plugin>
+            <plugin>
+                <groupId>com.googlecode.maven-download-plugin</groupId>
+                <artifactId>download-maven-plugin</artifactId>
+                <version>${maven-download-plugin.version}</version>
+                <executions>
+                    <!-- download chrome driver, new versions see on http://chromedriver.storage.googleapis.com/-->
+                    <execution>
+                        <id>install-chrome-driver-linux64</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>
+                                https://chromedriver.storage.googleapis.com/${chromedriver-dep.version}/chromedriver_linux64.zip
+                            </url>
+                            <unpack>true</unpack>
+                            <outputDirectory>${basedir}/drivers/linux/64bit/</outputDirectory>
+                            <md5>6dc329fb8ecdff6a9f74eea053434662</md5>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>install-chrome-driver-windows</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>
+                                https://chromedriver.storage.googleapis.com/${chromedriver-dep.version}/chromedriver_win32.zip
+                            </url>
+                            <unpack>true</unpack>
+                            <outputDirectory>${basedir}/drivers/windows/</outputDirectory>
+                            <md5>718df64a6e2b2efde50b26ac22fde229</md5>
+                        </configuration>
+                    </execution>
+                    <execution>
+                        <id>install-chrome-driver-osx</id>
+                        <phase>generate-resources</phase>
+                        <goals>
+                            <goal>wget</goal>
+                        </goals>
+                        <configuration>
+                            <url>
+                                https://chromedriver.storage.googleapis.com/${chromedriver-dep.version}/chromedriver_mac64.zip
+                            </url>
+                            <unpack>true</unpack>
+                            <outputDirectory>${basedir}/drivers/osx/</outputDirectory>
+                            <md5>3d520b8ede8e9deb8c9a2efe2aec5f35</md5>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
+
         </plugins>
     </build>
 
@@ -169,6 +231,13 @@
             <version>4.12</version>
             <scope>test</scope>
         </dependency>
+
+        <dependency>
+            <groupId>net.masterthought</groupId>
+            <artifactId>maven-cucumber-reporting</artifactId>
+            <version>3.12.0</version>
+        </dependency>
+
     </dependencies>
 
     <profiles>

@@ -1,5 +1,6 @@
 #folder
 .idea/*
+drivers/*
 .idea
 out/*
 target/*

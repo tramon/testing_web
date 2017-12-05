@@ -9,7 +9,8 @@ import cucumber.api.junit.Cucumber;
 @CucumberOptions(
         glue = {"testing_web"},
         features = ".",
-        format = {"pretty", "json:target/cucumber-reports/cucumber.json"},
+//        format = {"pretty", "json:target/cucumber-reports/cucumber.json"},
+        format = {"pretty", "html:target/site/"},
         tags = {"@complete"}
 )
 public class AllTests {
