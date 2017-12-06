@@ -20,9 +20,9 @@
         <archetype.encoding>${encoding}</archetype.encoding>
 
         <cucumber.version>1.2.5</cucumber.version>
-        <selenium.version>3.0.1</selenium.version>
+        <selenium.version>3.8.1</selenium.version>
 
-        <web.chrome.driver>drivers\\web\\chromedriver.exe</web.chrome.driver>
+        <web.chrome.webDriver>drivers\\web\\chromedriver.exe</web.chrome.webDriver>
         <chromedriver-dep.version>2.33</chromedriver-dep.version>
 
     </properties>
@@ -112,9 +112,9 @@
                 <artifactId>download-maven-plugin</artifactId>
                 <version>${maven-download-plugin.version}</version>
                 <executions>
-                    <!-- download chrome driver, new versions see on http://chromedriver.storage.googleapis.com/-->
+                    <!-- download chrome webDriver, new versions see on http://chromedriver.storage.googleapis.com/-->
                     <execution>
-                        <id>install-chrome-driver-linux64</id>
+                        <id>install-chrome-webDriver-linux64</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>wget</goal>
@@ -129,7 +129,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>install-chrome-driver-windows</id>
+                        <id>install-chrome-webDriver-windows</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>wget</goal>
@@ -144,7 +144,7 @@
                         </configuration>
                     </execution>
                     <execution>
-                        <id>install-chrome-driver-osx</id>
+                        <id>install-chrome-webDriver-osx</id>
                         <phase>generate-resources</phase>
                         <goals>
                             <goal>wget</goal>
@@ -171,34 +171,9 @@
             <version>${selenium.version}</version>
         </dependency>
         <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-firefox-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-chrome-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-ie-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-safari-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-remote-driver</artifactId>
-            <version>${selenium.version}</version>
-        </dependency>
-        <dependency>
-            <groupId>org.seleniumhq.selenium</groupId>
-            <artifactId>selenium-edge-driver</artifactId>
-            <version>${selenium.version}</version>
+            <groupId>com.codeborne</groupId>
+            <artifactId>phantomjsdriver</artifactId>
+            <version>1.4.3</version>
         </dependency>
         <dependency>
             <groupId>com.google.inject</groupId>
