@@ -1,10 +1,10 @@
 package testing_web.ui.pages;
 
-import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import testing_web.utils.page_object.PageObject;
-
+import javax.inject.Inject;
 
 
 public class GooglePage extends PageObject {
@@ -15,15 +15,17 @@ public class GooglePage extends PageObject {
     @FindBy(id = "viewport")
     private WebElement container;
 
+    @Inject
+    public GooglePage(WebDriver webDriver) {
+        super(webDriver);
+    }
+
     public WebElement getGoogleInput() {
-//        return googleInput;
-        return webDriver.findElement(By.id("lst-ib"));
+        return googleInput;
     }
 
     public WebElement getContainer() {
-//        return container;
-        return webDriver.findElement(By.id("viewport"));
+        return container;
     }
-
 
 }

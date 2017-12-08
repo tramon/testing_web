@@ -1,13 +1,19 @@
 package testing_web.utils.page_object;
 
-import org.openqa.selenium.WebDriver;
 
-import javax.inject.Inject;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.support.PageFactory;
+
 
 public class PageObject {
 
-    @Inject
     protected WebDriver webDriver;
+
+    public PageObject(WebDriver webDriver) {
+        this.webDriver = webDriver;
+        PageFactory.initElements(this.webDriver, this);
+
+    }
 
 
 }

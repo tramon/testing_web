@@ -1,26 +1,27 @@
 package testing_web.utils;
 
-import org.openqa.selenium.*;
-import org.openqa.selenium.remote.DesiredCapabilities;
-import java.util.concurrent.TimeUnit;
 
-public class DriverUtils {
-    public static long DEFAULT_WAIT = 30;
-    protected static WebDriver driver;
+import org.openqa.selenium.WebDriver;
 
-    public static WebDriver getDriver() {
-        if (driver != null) {
-            return driver;
+public final class DriverUtils {
+
+    private static String BASE_WINDOW = "";
+
+    public static void switchToNextWindow(WebDriver webDriver) {
+        String currentWindowHandle = webDriver.getWindowHandle();
+        if (!currentWindowHandle.equalsIgnoreCase(BASE_WINDOW)) {
+            BASE_WINDOW = currentWindowHandle;
         }
-        System.setProperty("webdriver.chrome.driver", "drivers/windows/chromedriver.exe");
-        DesiredCapabilities capabilities = null;
-        capabilities = DesiredCapabilities.chrome();
-        capabilities.setJavascriptEnabled(true);
-        capabilities.setCapability("takesScreenshot", false);
-        driver.manage().timeouts().setScriptTimeout(DEFAULT_WAIT, TimeUnit.SECONDS);
-        driver.manage().window().maximize();
-        return driver;
+
+        webDriver.getWindowHandles().forEach( (s) -> {
+            if (!BASE_WINDOW.equals(s)) {
+                webDriver.switchTo().window(s);
+            }
+        });
     }
 
+    public static void switchToDefaultWindow(WebDriver driver) {
+        driver.switchTo().window(BASE_WINDOW);
+    }
 
 }
