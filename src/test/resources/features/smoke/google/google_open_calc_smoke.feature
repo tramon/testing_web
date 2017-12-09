@@ -1,11 +1,12 @@
-@complete
-Feature: Example feature
+@google
+@enabled
+Feature: Google page opens and searches
 
   In order to test google calculator
   As a browser user
   I want to run tests on UI
 
-  Scenario: Searching Google...
+  Scenario: Google calc smoke
     Given I open 'http://google.com' page
     When In google page I search for 'google calc'
-    Then I should have google calc page opened
+    Then Google calc page should be opened
