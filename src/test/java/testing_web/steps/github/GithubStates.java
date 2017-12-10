@@ -33,16 +33,30 @@ public class GithubStates {
 
     public Response sendGetToAuthorize(String endpoint) {
         JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("age", "50");
-        jsonObject.addProperty("age", "50");
-        jsonObject.addProperty("age", "50");
+        jsonObject.addProperty("name", "Hello-World");
+        jsonObject.addProperty("description", "Hello-World repo");
+        jsonObject.addProperty("homepage", "https://github.com");
+        jsonObject.addProperty("private", "false");
+        jsonObject.addProperty("has_issues", "false");
+        jsonObject.addProperty("has_projects", "false");
+        jsonObject.addProperty("has_wiki", "false");
 
         Response response = given()
                 .auth()
                 .preemptive()
-                .basic("login", "password")
+                .basic("tramontest", "password-1")
+//                .body(jsonObject)
+                .body("{\n" +
+                        "  \"name\": \"Hello-World\",\n" +
+                        "  \"description\": \"This is your first repository\",\n" +
+                        "  \"homepage\": \"https://github.com\",\n" +
+                        "  \"private\": false,\n" +
+                        "  \"has_issues\": false,\n" +
+                        "  \"has_projects\": false,\n" +
+                        "  \"has_wiki\": false\n" +
+                        "}")
                 .when()
-                .get("https://api.github.com/authorizations")
+                .post("https://api.github.com/authorizations")
                 .then()
                 .extract()
                 .response();

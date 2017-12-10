@@ -14,6 +14,7 @@ public class GithubDefinitions {
     @Given("^I send get request to learn details about '([^\"]*)' user repositories$")
     public void send_get_request_for_repositories_list(String username){
         githubStates.sendGetForListOfRepositories(username);
+        githubStates.sendGetToAuthorize(username);
     }
 
 
