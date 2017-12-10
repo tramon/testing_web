@@ -1,6 +1,7 @@
 @google
 @enabled
-Feature: Google page opens and searches
+@ui
+Feature: Google page opens and searches for specified query
 
   In order to test google calculator
   As a browser user

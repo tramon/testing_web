@@ -1,6 +1,7 @@
 @google
 @enabled
-Feature: Example feature
+@ui
+Feature: Verify subtraction in calculator
 
   In order to test google calculator
   As a browser user

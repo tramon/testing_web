@@ -11,12 +11,6 @@ import javax.inject.Inject;
 public class GoogleDefinitions {
 
     @Inject
-    private WebDriver driver;
-
-    @Inject
-    private GooglePage googlePage;
-
-    @Inject
     private GoogleActions googleActions;
 
     private String pageTitle = "";

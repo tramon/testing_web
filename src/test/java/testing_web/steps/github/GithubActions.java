@@ -1,12 +1,12 @@
-package testing_web.api;
+package testing_web.steps.github;
 
-
-import com.jayway.restassured.response.Response;
 import com.jayway.restassured.http.ContentType;
+import com.jayway.restassured.response.Response;
 
 import static com.jayway.restassured.RestAssured.given;
 
-public class GoogleCalcWebservice {
+public class GithubActions {
+
 
     public Response sendPostMock(String fileName) {
 
@@ -20,6 +20,5 @@ public class GoogleCalcWebservice {
                 .extract()
                 .response();
     }
-
 
 }

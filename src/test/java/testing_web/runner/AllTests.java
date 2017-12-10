@@ -17,7 +17,7 @@ import cucumber.api.junit.Cucumber;
                 "json:target/cucumber-reports/cucumber.json"},
         features = "classpath:features",
         glue = {"testing_web"},
-        tags = {"@enabled"}
+        tags = {"@api"}
 )
 public class AllTests {
 
