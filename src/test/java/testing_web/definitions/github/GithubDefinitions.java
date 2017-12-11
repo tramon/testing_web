@@ -1,16 +1,12 @@
 package testing_web.definitions.github;
 
-import cucumber.api.java.en.Given;
+
 import cucumber.api.java.en.When;
 import testing_web.steps.github.GithubActions;
 import testing_web.steps.github.GithubStates;
-
 import javax.inject.Inject;
+import java.io.IOException;
 
-import java.util.Collections;
-import java.util.List;
-
-import static testing_web.commons.constants.SystemProperties.GITHUB_LIST_OF_REPOSITORIES;
 
 public class GithubDefinitions {
 
@@ -20,13 +16,13 @@ public class GithubDefinitions {
     @Inject
     private GithubActions githubActions;
 
-    @When("^I get list of '([^\"]*)' user repositories$")
-    public void send_get_request_for_repositories_list(String username) {
-        githubActions.saveListOfReposToSystemProperty(githubStates.get_list_of_repositories(username));
+    @When("^I get list of user repositories$")
+    public void send_get_request_for_repositories_list() {
+        githubActions.saveListOfReposToSystemProperty(githubStates.get_list_of_repositories());
     }
 
     @When("^I create public repository '([^\"]*)' on Github$")
-    public void create_repository(String repositoryName) throws InterruptedException {
+    public void create_repository(String repositoryName) throws InterruptedException, IOException {
         githubActions.createRepositoryAndVerifyStatusCode(repositoryName);
     }
 

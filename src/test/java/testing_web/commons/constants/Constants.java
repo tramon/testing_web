@@ -11,4 +11,5 @@ public class Constants {
     public static final String GITHUB_LOGIN = "tramontest";
     public static final String GITHUB_PASSWORD = "password-1";
 
+
 }

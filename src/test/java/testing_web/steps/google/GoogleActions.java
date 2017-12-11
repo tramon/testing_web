@@ -4,7 +4,6 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import testing_web.commons.constants.Constants;
 import testing_web.ui.pages.GooglePage;
-
 import javax.inject.Inject;
 
 
@@ -16,7 +15,6 @@ public class GoogleActions {
     @Inject
     private GooglePage googlePage;
 
-    private String pageTitle = "";
 
     public void openBaseUrl(){
         driver.get(Constants.BASE_URL);

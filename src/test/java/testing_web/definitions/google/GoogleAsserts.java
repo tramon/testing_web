@@ -10,6 +10,7 @@ import testing_web.commons.constants.ProjectTimeouts;
 import testing_web.ui.pages.GooglePage;
 import javax.inject.Inject;
 
+
 public class GoogleAsserts {
 
     @Inject
@@ -19,7 +20,6 @@ public class GoogleAsserts {
     private GooglePage googlePage;
 
     private String pageTitle = "";
-
 
 
     @Then("^I should have google page opened$")

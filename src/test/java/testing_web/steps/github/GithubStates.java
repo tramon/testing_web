@@ -1,21 +1,19 @@
 package testing_web.steps.github;
 
+
 import com.jayway.restassured.http.ContentType;
 import com.jayway.restassured.response.Response;
-import org.openqa.selenium.WebDriver;
-
-import javax.inject.Inject;
+import testing_web.commons.constants.Constants;
 import java.util.ArrayList;
 import java.util.List;
 
 import static com.jayway.restassured.RestAssured.given;
-import static testing_web.commons.constants.Constants.*;
+
 
 public class GithubStates {
 
-
-    public List<String> get_list_of_repositories(String endpoint) {
-        String reposEndPoint = String.format(GITHUB_LIST_OF_USER_REPOS, endpoint);
+    public List<String> get_list_of_repositories() {
+        String reposEndPoint = String.format(Constants.GITHUB_LIST_OF_USER_REPOS, Constants.GITHUB_LOGIN);
 
         Response response = given()
                 .contentType(ContentType.JSON)

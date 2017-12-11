@@ -8,11 +8,12 @@ import javax.inject.Inject;
 
 public class GoogleCalcDefinitions {
 
-
     @Inject
     private GoogleCalcPage googleCalcPage;
+
     @Inject
     private GoogleCalcActions googleCalcActions;
+
 
     @When("^I enter '([^\"]*)' to google calc input$")
     public void click_the_button(String button) {

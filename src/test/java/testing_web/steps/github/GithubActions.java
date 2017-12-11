@@ -1,7 +1,10 @@
 package testing_web.steps.github;
 
-import com.jayway.restassured.response.Response;
 
+import com.google.gson.JsonObject;
+import testing_web.commons.constants.SystemVariables;
+import testing_web.commons.dao.github.CreateRepoJsonObject;
+import java.io.IOException;
 import java.util.Collections;
 import java.util.List;
 
@@ -9,27 +12,20 @@ import static com.jayway.restassured.RestAssured.given;
 import static testing_web.commons.constants.Constants.*;
 import static testing_web.commons.constants.Constants.GITHUB_LOGIN;
 import static testing_web.commons.constants.Constants.GITHUB_PASSWORD;
-import static testing_web.commons.constants.SystemProperties.GITHUB_LIST_OF_REPOSITORIES;
+
 
 public class GithubActions {
 
 
-    public void createRepositoryAndVerifyStatusCode(String repositoryName) {
-        String jsonString = String.format("{\n" +
-                "  \"name\": \"%s\",\n" +
-                "  \"description\": \"This is your first repository\",\n" +
-                "  \"homepage\": \"https://github.com\",\n" +
-                "  \"private\": false,\n" +
-                "  \"has_issues\": false,\n" +
-                "  \"has_projects\": false,\n" +
-                "  \"has_wiki\": false\n" +
-                "}", repositoryName);
+    public void createRepositoryAndVerifyStatusCode(String repositoryName) throws IOException {
+
+        String json = new CreateRepoJsonObject(repositoryName).toString();
 
         given()
                 .auth()
                 .preemptive()
                 .basic(GITHUB_LOGIN, GITHUB_PASSWORD)
-                .body(jsonString)
+                .body(json)
                 .when()
                 .post(GITHUB_API_HOST + GITHUB_CREATE_REPO_ENDPOINT)
                 .then()
@@ -56,7 +52,7 @@ public class GithubActions {
     public void saveListOfReposToSystemProperty(List<String> listOfActualRepositories) {
         Collections.sort(listOfActualRepositories);
         String stringFromList = String.join(", ", listOfActualRepositories);
-        System.setProperty(GITHUB_LIST_OF_REPOSITORIES, stringFromList);
+        System.setProperty(SystemVariables.GITHUB_LIST_OF_REPOSITORIES, stringFromList);
 
     }
 }

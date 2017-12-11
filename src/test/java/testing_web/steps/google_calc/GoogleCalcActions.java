@@ -1,7 +1,6 @@
 package testing_web.steps.google_calc;
 
 import testing_web.ui.pages.GoogleCalcPage;
-
 import javax.inject.Inject;
 
 
