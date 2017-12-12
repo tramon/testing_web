@@ -3,6 +3,7 @@ package testing_web.utils;
 
 import org.openqa.selenium.WebDriver;
 
+
 public final class DriverUtils {
 
     private static String BASE_WINDOW = "";

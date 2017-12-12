@@ -1,8 +1,7 @@
 package testing_web.commons.dao.github;
 
-import com.google.gson.JsonObject;
 
-public class CreateRepoJsonObject {
+public class CreateRepoJsonDao {
 
     private String name;
     private String description;
@@ -13,7 +12,7 @@ public class CreateRepoJsonObject {
     private String has_wiki;
 
 
-    public CreateRepoJsonObject() {
+    public CreateRepoJsonDao() {
         name = "repositoryName";
         description = "Repository description";
         homepage = "https://github.com";
@@ -23,7 +22,7 @@ public class CreateRepoJsonObject {
         has_wiki = "false";
     }
 
-    public CreateRepoJsonObject(String name) {
+    public CreateRepoJsonDao(String name) {
         this.name = name;
         description = "Repository description";
         homepage = "https://github.com";
@@ -33,7 +32,7 @@ public class CreateRepoJsonObject {
         has_wiki = "false";
     }
 
-    public CreateRepoJsonObject(String name, String description) {
+    public CreateRepoJsonDao(String name, String description) {
         this.name = name;
         this.description = description;
         homepage = "https://github.com";
@@ -43,27 +42,12 @@ public class CreateRepoJsonObject {
         has_wiki = "false";
     }
 
-
-    private String getJsonStringToCreateRepoRequest(String repositoryName) {
-        JsonObject jsonObject = new JsonObject();
-        jsonObject.addProperty("name", repositoryName);
-        jsonObject.addProperty("description", "This is your first repository");
-        jsonObject.addProperty("homepage", "This is your first repository");
-        jsonObject.addProperty("private", "false");
-        jsonObject.addProperty("has_issues", "false");
-        jsonObject.addProperty("has_projects", "false");
-        jsonObject.addProperty("has_wiki", "false");
-
-        return jsonObject.toString().replaceAll("\"", "\\\"");
-    }
-
-
-    public CreateRepoJsonObject setName(String repositoryName) {
+    public CreateRepoJsonDao setName(String repositoryName) {
         this.name = repositoryName;
         return this;
     }
 
-    public CreateRepoJsonObject setDescription(String repositoryName) {
+    public CreateRepoJsonDao setDescription(String repositoryName) {
         this.description = repositoryName;
         return this;
     }
@@ -76,7 +60,7 @@ public class CreateRepoJsonObject {
         return homepage;
     }
 
-    public CreateRepoJsonObject setHomepage(String homepage) {
+    public CreateRepoJsonDao setHomepage(String homepage) {
         this.homepage = homepage;
         return this;
     }
@@ -85,7 +69,7 @@ public class CreateRepoJsonObject {
         return isPrivate;
     }
 
-    public CreateRepoJsonObject setIsPrivate(String isPrivate) {
+    public CreateRepoJsonDao setIsPrivate(String isPrivate) {
         this.isPrivate = isPrivate;
         return this;
     }
@@ -94,7 +78,7 @@ public class CreateRepoJsonObject {
         return has_issues;
     }
 
-    public CreateRepoJsonObject setHas_issues(String has_issues) {
+    public CreateRepoJsonDao setHas_issues(String has_issues) {
         this.has_issues = has_issues;
         return this;
     }
@@ -103,7 +87,7 @@ public class CreateRepoJsonObject {
         return has_projects;
     }
 
-    public CreateRepoJsonObject setHas_projects(String has_projects) {
+    public CreateRepoJsonDao setHas_projects(String has_projects) {
         this.has_projects = has_projects;
         return this;
     }
@@ -112,7 +96,7 @@ public class CreateRepoJsonObject {
         return has_wiki;
     }
 
-    public CreateRepoJsonObject setHas_wiki(String has_wiki) {
+    public CreateRepoJsonDao setHas_wiki(String has_wiki) {
         this.has_wiki = has_wiki;
         return this;
     }
@@ -123,7 +107,7 @@ public class CreateRepoJsonObject {
                 "  \"name\": \"" + name + "\",\n" +
                 "  \"description\": \"" + description + "\",\n" +
                 "  \"homepage\": \"" + homepage + "\",\n" +
-                "  \"private\": \"" + isPrivate + ",\n" +
+                "  \"private\": " + isPrivate + ",\n" +
                 "  \"has_issues\": " + has_issues + ",\n" +
                 "  \"has_projects\": " + has_projects + ",\n" +
                 "  \"has_wiki\": " + has_wiki + "\n" +

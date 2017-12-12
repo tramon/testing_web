@@ -1,10 +1,8 @@
 package testing_web.steps.github;
 
 
-import com.google.gson.JsonObject;
 import testing_web.commons.constants.SystemVariables;
-import testing_web.commons.dao.github.CreateRepoJsonObject;
-import java.io.IOException;
+import testing_web.commons.dao.github.CreateRepoJsonDao;
 import java.util.Collections;
 import java.util.List;
 
@@ -17,11 +15,11 @@ import static testing_web.commons.constants.Constants.GITHUB_PASSWORD;
 public class GithubActions {
 
 
-    public void createRepositoryAndVerifyStatusCode(String repositoryName) throws IOException {
+    public void createRepositoryAndVerifyStatusCode(String repositoryName) {
 
-        String json = new CreateRepoJsonObject(repositoryName).toString();
+        String json = new CreateRepoJsonDao(repositoryName).toString();
 
-        given()
+                given()
                 .auth()
                 .preemptive()
                 .basic(GITHUB_LOGIN, GITHUB_PASSWORD)
@@ -29,24 +27,22 @@ public class GithubActions {
                 .when()
                 .post(GITHUB_API_HOST + GITHUB_CREATE_REPO_ENDPOINT)
                 .then()
-                .statusCode(201)
-                .extract()
-                .response();
+                .statusCode(201);
 
     }
 
     public void deleteRepositoryAndVerifyStatusCode(String repositoryName) {
         String endpointToDeleteRepo = String.format(GITHUB_API_HOST + GITHUB_DELETE_REPO_ENDPOINT, GITHUB_LOGIN, repositoryName);
-        given()
+
+                given()
                 .auth()
                 .preemptive()
                 .basic(GITHUB_LOGIN, GITHUB_PASSWORD)
                 .when()
                 .delete(endpointToDeleteRepo)
                 .then()
-                .statusCode(204)
-                .extract()
-                .response();
+                .statusCode(204);
+
     }
 
     public void saveListOfReposToSystemProperty(List<String> listOfActualRepositories) {

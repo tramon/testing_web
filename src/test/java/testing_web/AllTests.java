@@ -1,4 +1,4 @@
-package testing_web.runner;
+package testing_web;
 
 import org.junit.runner.RunWith;
 import cucumber.api.CucumberOptions;
